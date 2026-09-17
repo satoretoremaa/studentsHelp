@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="color-scheme" content="dark">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
@@ -10,7 +11,9 @@
 <body>
 <header>
     <div class="narrow">
-        <h1>Как подключить всё что нужно подключить чтобы работало</h1>
+        <span class="date">17.09.2026</span>
+        <h1>Как подключить всё что нужно</h1>
+        <h3>Краткое руководство с далеко идущими последствиями</h3>
     </div>
 </header>
 <article>
@@ -37,7 +40,9 @@
 
     <div class="codeblock">
         <div class="lang">gitBash</div>
-        <code><span class="sub">$</span> ssh-keygen</code>
+        <div class="codebody">
+            <pre><code><span class="sub">$</span> ssh-keygen</code></pre>
+        </div>
     </div>
 
     <p>
@@ -57,11 +62,11 @@
     </p>
     <div class="codeblock">
         <div class="lang">common text</div>
-        <pre><code>
-Host ssh.sourcecraft.dev
+        <div class="codebody"><pre><code>Host ssh.sourcecraft.dev
     IdentityFile C:/Users/&lt;имя пользователя>/.ssh/&lt;название файла секретного ключа, по умолчанию - id_ed25519>
     IdentitiesOnly yes
 </code></pre>
+        </div>
     </div>
 
 
@@ -69,6 +74,10 @@ Host ssh.sourcecraft.dev
 
     <h2 id="repositoryCloning">Клонируем репозиторий</h2>
 </article>
+
+<footer>
+    <div class="narrow"><p>&copy; Создано во благо человечества. Цените)</p></div>
+</footer>
 
 <button class="scrollToTopButton">
     Наверх
@@ -79,7 +88,7 @@ Host ssh.sourcecraft.dev
 
     if (scrollToTop) {
 
-        window.addEventListener('scroll', (e) => {
+        window.addEventListener('scroll', () => {
             if (window.scrollY >= 50) {
                 scrollToTop.classList.remove('hidden');
             } else {

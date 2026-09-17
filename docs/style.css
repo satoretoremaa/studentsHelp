@@ -5,6 +5,17 @@
     line-height: 1.75;
     overscroll-behavior: none;
     scroll-behavior: smooth;
+
+    --accent-warm: #ef84a5;
+    --accent-cold: #ab8cca;
+    --grey: #a7a8b3;
+    --pale: #d9cae7;
+
+    --bg: #1c1b22;
+    --bg-light: #2a2833;
+    --text: #ffffff;
+
+    background-color: var(--bg);
 }
 
 * {
@@ -14,19 +25,26 @@
 }
 
 *::selection {
-    background: #ffcc00;
-    color: #fff;
+    background: var(--accent-cold);
+    color: var(--text);
 }
 
 article, .narrow {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 16px;
     max-width: 65ch;
     margin: auto;
 }
 
+li {
+    margin-left: 1.5rem;
+}
+
+li::marker {
+    color: var(--grey);
+}
+
 header {
-    background-image: linear-gradient(to right, #FFCC00, #FF7700);
+    background-image: linear-gradient(140deg, var(--accent-warm), #584171);
     padding: 16px;
     display: flex;
     align-items: center;
@@ -36,72 +54,132 @@ header {
     border-bottom-right-radius: 3rem;
 }
 
+footer {
+    background-image: linear-gradient(140deg, var(--accent-warm), #584171);
+    padding: 4rem 1rem 2rem 1rem;
+    position: relative;
+}
+
+footer::before {
+    background-color: var(--bg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    content: "";
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+}
+
 h1 {
     color: white;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 4rem);
     line-height: 1;
+    margin-bottom: 0.5rem;
+    text-wrap-style: pretty;
 }
 
 h2 {
-    color: #FF7700;
+    color: var(--accent-cold);
     margin-top: 2rem;
 }
 
-a, code {
-    color: #555;
-    transition: color 0.4s ease;
+h3 {
+    color: var(--pale);
+    font-weight: normal;
+    line-height: 1;
+    font-size: 1.5rem;
 }
 
-code {
-    font-family: Courier, monospace;
+.date, .subtitle {
+    color: var(--pale);
+    font-size: 16px;
+}
+
+a, li {
+    color: var(--grey);
+    transition: color 0.2s ease;
 }
 
 .sub, .lang {
-    color: #BBB;
+    color: var(--pale);
 }
 
-.lang {
-    display: block;
-    padding-bottom: 4px;
-    border-bottom: 2px solid #CCC;
-    margin-bottom: 4px;
+@media(hover: hover) {
+    a:hover {
+        color: var(--accent-cold);
+    }
+
+    li:hover::marker {
+        color: var(--accent-cold);
+    }
 }
 
-a:hover {
-    color: #FF7700;
+a:active {
+    color: var(--accent-cold);
 }
 
-pre {
-    overflow: scroll;
+a:active::marker {
+    color: var(--accent-cold);
 }
 
 p, .codeblock {
     margin-bottom: 0.75rem;
 }
 
-.codeblock {
-    background-color: #F0F0F0;
+.lang {
+    display: block;
     padding: 1rem 2rem;
-    border-radius: 1.5rem;
+    margin-bottom: 4px;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    background-color: var(--bg-light);
+}
+
+.codebody {
+    overflow: scroll;
+    background-color: var(--bg-light);
+    padding: 1rem 0;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+code {
+    color: var(--grey);
+    font-family: Courier, monospace;
+}
+
+pre {
+    width: fit-content;
+    display: block;
+    padding: 0 2rem;
 }
 
 .scrollToTopButton {
     position: fixed;
     display: block;
-
     bottom: 2rem;
-    left: 10%;
-    transition: opacity 0.4s ease;
+    right: 10vw;
+    transition: transform 0.2s ease;
     padding: 1rem 2rem;
     border-radius: 1.5rem;
-    color: white;
+    color: var(--text);
     outline: none;
     border: none;
-    background-color: #FF7700;
-    opacity: 0.5;
+    background-color: var(--accent-cold);
     font-size: 1rem;
+}
 
+.scrollToTopButton:active {
+    transform: scale(0.9);
+}
+
+@media(hover: hover) {
+    .scrollToTopButton:hover {
+        transform: scale(0.9);
+    }
 }
 
 .hidden {
