@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Инструкция по подключению репозитория через технологию Secure SHell">
+    <title>Инструкция по подключению репозитория</title>
+</head>
+<body>
+<header>
+    <div class="narrow">
+        <h1>Как подключить всё что нужно подключить чтобы работало</h1>
+    </div>
+</header>
+<article>
+    <h2>Содержание:</h2>
+    <ol>
+        <li><a href="#keyGeneration">Генерируем ключ</a></li>
+        <li><a href="#addingToSourcecraft">Подключаем к sourcecraft</a></li>
+        <li><a href="#repositoryCloning">Клонируем репозиторий</a></li>
+    </ol>
+
+    <h2 id="keyGeneration">Генерируем ключ</h2>
+    <p>
+        Для начала необходимо обзавестись программой gitBash, если вы этого ещё не сделали.
+    </p>
+    <p>
+        <a href="https://git-scm.com/install/windows">Здесь можно скачать gitBash.</a>
+    </p>
+    <p>
+        Дело в том, что исторически архитектура git была разработана под linux. Linux внутренне устроен иначе чем
+        windows, и, что очевидно, языки терминала windows и linux существенно различаются. Команды git - это команды
+        linux.
+    </p>
+    <p>Заходим в gitBash от имени администратора, вводим команду:</p>
+
+    <div class="codeblock">
+        <div class="lang">gitBash</div>
+        <code><span class="sub">$</span> ssh-keygen</code>
+    </div>
+
+    <p>
+        В самом начале - вводим своё название для файла, если нас не устраивает системное. Иначе - наживаем enter,
+        тогда файл получит название в духе <code>id_ed25519</code>. Когда он попросит кодовое слово - просто
+        нажимаем enter, если, конечно, вы не хотите ставить пароль.
+    </p>
+    <p>
+        В результате в директории <code>C:\Users\&lt;имя пользователя>\.ssh</code> появятся 2 файла: один без расширения,
+        один - с расширением <code>.pub</code>. Файл без расширения - приватный ключ, его нельзя показывать никому. Файл
+        с расширением <code>.pub</code> - публичный ключ. Это почти как RSA на алгебре, только круче, потому что алгоритм
+        сложнее.
+    </p>
+    <p>
+        Сразу после нужно создать в той же директории файл с названием <code>config</code> без расширения (проверьте, что его действительно нет, а оно
+        не скрыто системой!). В этот файл скопируйте текст ниже, заменив всё, что нужно заменить внутри угловых скобок:
+    </p>
+    <div class="codeblock">
+        <div class="lang">common text</div>
+        <pre><code>
+Host ssh.sourcecraft.dev
+    IdentityFile C:/Users/&lt;имя пользователя>/.ssh/&lt;название файла секретного ключа, по умолчанию - id_ed25519>
+    IdentitiesOnly yes
+</code></pre>
+    </div>
+
+
+    <h2 id="addingToSourcecraft">Подключаем в sourcecraft</h2>
+
+    <h2 id="repositoryCloning">Клонируем репозиторий</h2>
+</article>
+
+<button class="scrollToTopButton">
+    Наверх
+</button>
+
+<script defer>
+    const scrollToTop = document.querySelector('.scrollToTopButton');
+
+    if (scrollToTop) {
+
+        window.addEventListener('scroll', (e) => {
+            if (window.scrollY >= 50) {
+                scrollToTop.classList.remove('hidden');
+            } else {
+                scrollToTop.classList.add('hidden');
+            }
+        })
+
+        scrollToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+        });
+    }
+
+
+</script>
+</body>
+</html>

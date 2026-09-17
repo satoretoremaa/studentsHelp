@@ -1,0 +1,110 @@
+:root {
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    line-height: 1.75;
+    overscroll-behavior: none;
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background: #ffcc00;
+    color: #fff;
+}
+
+article, .narrow {
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 65ch;
+    margin: auto;
+}
+
+header {
+    background-image: linear-gradient(to right, #FFCC00, #FF7700);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+h2 {
+    color: #FF7700;
+    margin-top: 2rem;
+}
+
+a, code {
+    color: #555;
+    transition: color 0.4s ease;
+}
+
+code {
+    font-family: Courier, monospace;
+}
+
+.sub, .lang {
+    color: #BBB;
+}
+
+.lang {
+    display: block;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #CCC;
+    margin-bottom: 4px;
+}
+
+a:hover {
+    color: #FF7700;
+}
+
+pre {
+    overflow: scroll;
+}
+
+p, .codeblock {
+    margin-bottom: 0.75rem;
+}
+
+.codeblock {
+    background-color: #F0F0F0;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+}
+
+.scrollToTopButton {
+    position: fixed;
+    display: block;
+
+    bottom: 2rem;
+    left: 10%;
+    transition: opacity 0.4s ease;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+    color: white;
+    outline: none;
+    border: none;
+    background-color: #FF7700;
+    opacity: 0.5;
+    font-size: 1rem;
+
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
