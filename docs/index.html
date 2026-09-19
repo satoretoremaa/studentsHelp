@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta name="color-scheme" content="dark">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Инструкция по подключению репозитория через технологию Secure Shell">
-    <meta name="theme-color" content="#1c1b22">
-    <title>Подключаем репозиторий через ssh</title>
-    <meta property="og:title" content="Подключаем репозиторий через ssh">
-    <meta property="og:description" content="Инструкция по подключению репозитория на sourcecraft через технологию Secure Shell">
-    <meta property="og:type" content="website">
-</head>
+    <head>
+        <meta name="color-scheme" content="dark">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="style.css">
+        <meta name="description" content="Инструкция по подключению репозитория через технологию Secure Shell">
+        <meta name="theme-color" content="#1c1b22">
+        <title>Подключаем репозиторий через ssh</title>
+        <meta property="og:title" content="Подключаем репозиторий через ssh">
+        <meta property="og:description" content="Инструкция по подключению репозитория на sourcecraft через технологию Secure Shell">
+        <meta property="og:type" content="website">
+        <script type="module" src="../src/AdaptiveHeader.js"></script>
+        <script type="module" src="../src/ArticleHeader.js"></script>
+    </head>
 
-<body class="hidden">
+    <body class="hidden">
+        <adaptive-header></adaptive-header>
 
         <main>
-            <div class="article-header">
-                <div class="narrow">
-                    <span class="date">17.09.2026</span>
-                    <h1>Как подключить всё что нужно</h1>
-                    <span class="h3-like">Краткое руководство с далеко идущими последствиями</span>
-                </div>
-            </div>
-            <article>
+            <article-header
+                    date="19.09.2026"
+                    title="Как подключить всё что нужно"
+                    subtitle="Краткое руководство с далеко идущими последствиями"
+                    imageUrl="./img/kittiyo.jpg"
+            ></article-header>
 
+            <article>
                 <h2>Содержание:</h2>
                 <ol>
                     <li><a href="#keyGeneration">Генерируем ключ</a></li>
@@ -71,8 +73,8 @@
                 <div class="code-block">
                     <div class="code-lang">common text</div>
                     <div class="code-body"><pre><code>Host ssh.sourcecraft.dev
-IdentityFile C:/Users/&lt;имя пользователя>/.ssh/&lt;название файла секретного ключа, по умолчанию - id_ed25519>
-IdentitiesOnly yes</code></pre></div>
+    IdentityFile C:/Users/&lt;имя пользователя>/.ssh/&lt;название файла секретного ключа, по умолчанию - id_ed25519>
+    IdentitiesOnly yes</code></pre></div>
                 </div>
 
 
@@ -117,28 +119,24 @@ IdentitiesOnly yes</code></pre></div>
         <script>
             window.onload = () => {
 
-
-
-                const scrollToTop = document.querySelector('.scroll-to-top-button');
+                const scrollButton = document.querySelector('.scroll-to-top-button');
                 document.body.classList.remove('hidden');
 
+                if (scrollButton) {
 
-
-                if (scrollToTop) {
-
-                    const handleButtonVisibility = () => {
+                    const handleScrollChange = () => {
                         if (window.scrollY >= 50) {
-                            scrollToTop.classList.remove('hidden');
+                            scrollButton.classList.remove('hidden');
                         } else {
-                            scrollToTop.classList.add('hidden');
+                            scrollButton.classList.add('hidden');
                         }
                     }
 
-                    handleButtonVisibility();
+                    handleScrollChange();
 
-                    window.addEventListener('scroll', () => handleButtonVisibility());
+                    window.addEventListener('scroll', () => handleScrollChange());
 
-                    scrollToTop.addEventListener('click', (e) => {
+                    scrollButton.addEventListener('click', (e) => {
                         e.preventDefault();
                         window.scrollTo(0, 0);
                     });
