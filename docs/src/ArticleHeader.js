@@ -24,7 +24,7 @@ class ArticleHeader extends HTMLElement {
                     <h1>${this.title}</h1>
                     <span class="h3-like">${this.subtitle}</span>
                 </div>
-                <img class="article-header-background" src=${this.imageUrl} loading="lazy" alt=""/>
+                <img class="article-header-background" src=${this.imageUrl} loading="lazy" alt="" draggable="false"/>
             </div>`;
     }
 }

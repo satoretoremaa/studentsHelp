@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta name="color-scheme" content="dark">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="../style.css">
+        <meta name="description" content="Инструкция по подключению репозитория через технологию Secure Shell">
+        <meta name="theme-color" content="#1c1b22">
+        <title>Подключаем репозиторий через ssh</title>
+        <meta property="og:title" content="Подключаем репозиторий через ssh">
+        <meta property="og:description" content="Инструкция по подключению репозитория на sourcecraft через технологию Secure Shell">
+        <meta property="og:type" content="website">
+        <script type="module" src="../src/AdaptiveHeader.js"></script>
+        <script type="module" src="../src/ArticleHeader.js"></script>
+        <script type="module" src="../src/ScrollTopButton.js"></script>
+    </head>
+
+    <body class="hidden">
+        <adaptive-header></adaptive-header>
+
+        <main>
+            <article-header
+                    date="19.09.2026"
+                    title="Как подключить всё что нужно"
+                    subtitle="Краткое руководство с далеко идущими последствиями"
+                    imageUrl="./img/kittiyo.jpg"
+            ></article-header>
+
+            <article>
+                <h2>Содержание:</h2>
+                <ol>
+                    <li><a href="#keyGeneration">Генерируем ключ</a></li>
+                    <li><a href="#addingToSourcecraft">Подключаем к sourcecraft</a></li>
+                    <li><a href="#repositoryCloning">Клонируем репозиторий</a></li>
+                </ol>
+
+                <h2 id="keyGeneration">Генерируем ключ</h2>
+                <p>
+                    Для начала необходимо обзавестись программой gitBash, если вы этого ещё не сделали.
+                </p>
+                <p>
+                    <a href="https://git-scm.com/install/windows">Здесь можно скачать gitBash.</a>
+                </p>
+                <p>
+                    Дело в том, что исторически архитектура git была разработана под linux. Linux внутренне устроен иначе чем
+                    windows, и, что очевидно, языки терминала windows и linux существенно различаются. Команды git - это команды
+                    linux.
+                </p>
+                <p>Заходим в gitBash от имени администратора, вводим команду:</p>
+
+                <div class="code-block">
+                    <div class="code-lang">gitBash</div>
+                    <div class="code-body">
+                        <pre><code><span class="sub-text">$</span> ssh-keygen</code></pre>
+                    </div>
+                </div>
+
+                <p>
+                    В самом начале - вводим своё название для файла, если нас не устраивает системное. Иначе - наживаем enter,
+                    тогда файл получит название в духе <code>id_ed25519</code>. Когда он попросит кодовое слово - просто
+                    нажимаем enter, если, конечно, вы не хотите ставить пароль.
+                </p>
+                <p>
+                    В результате в директории <code>C:\Users\&lt;имя пользователя>\.ssh</code> появятся 2 файла: один без расширения,
+                    один - с расширением <code>.pub</code>. Файл без расширения - приватный ключ, его нельзя показывать никому. Файл
+                    с расширением <code>.pub</code> - публичный ключ. Это почти как RSA на алгебре, только круче, потому что алгоритм
+                    сложнее.
+                </p>
+                <p>
+                    Сразу после нужно создать в той же директории файл с названием <code>config</code> без расширения (проверьте, что его действительно нет, а оно
+                    не скрыто системой!). В этот файл скопируйте текст ниже, заменив всё, что нужно заменить внутри угловых скобок:
+                </p>
+                <div class="code-block">
+                    <div class="code-lang">common text</div>
+                    <div class="code-body"><pre><code>Host ssh.sourcecraft.dev
+    IdentityFile C:/Users/&lt;имя пользователя>/.ssh/&lt;название файла секретного ключа, по умолчанию - id_ed25519>
+    IdentitiesOnly yes</code></pre></div>
+                </div>
+
+
+                <h2 id="addingToSourcecraft">Подключаем в sourcecraft</h2>
+
+                <p>
+                    Далее нужно перейти в sourcecraft и сохранить там наш публичный ssh-ключ: левая панель > доступ > SSH-ключи.
+                    В правом верхнем углу - кнопка "+ Новый SSH ключ". Нажимаем её, придумываем название ключу и добавляем публичный
+                    ключ из нашего файла <code>id_ed25519.pub</code> (есть кнопка загрузить из файла).
+                </p>
+                <p>
+                    Переходим к репозиторию c дз, там жмём "Клонировать" в правом верхнем углу, в выпадающем меню будет 3 ссылки.
+                    Копируем ссылку для SSH и перемещаемся в IntellyJ IDEA.
+                </p>
+
+                <h2 id="repositoryCloning">Клонируем репозиторий</h2>
+                <p>
+                    В IDE переходим в верхней панели: file > new > new project from version control... Откроется вспылвающее окно.
+                    В поле URL вставляем скопированную ссылку, нажимаем enter до упора. Готово.
+                </p>
+                <p>
+                    Когда понадобится сделать коммит, посмотрите на левую узкую панель. Там несколько вертикальных иконок, вторая из
+                    них - commit. Там просто выбираем нужные файлы, нажимаем commit and push, ждём пока загрузится. Не забудьте
+                    написать сообщение коммита в нижнем левом углу.
+                </p>
+
+            </article>
+        </main>
+
+        <footer>
+            <div class="narrow">
+                <p>
+                    &copy; Создано во благо человечества
+                </p>
+            </div>
+        </footer>
+
+        <scroll-top-button></scroll-top-button>
+    </body>
+</html>
