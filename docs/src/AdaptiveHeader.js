@@ -2,53 +2,50 @@ class AdaptiveHeader extends HTMLElement {
     constructor() {
         super();
 
-        this.linksData = [
-            {
-                href: "",
-                text: "Будущем"
-            },
-            {
-                href: "",
-                text: "В ближайшем"
-            },
-            {
-                href: "",
-                text: "Прямо здесь"
-            },
-            {
-                href: "",
-                text: "Появятся"
-            },
-            {
-                href: "",
-                text: "Новые разделы"
-            }
-        ];
+        this.linksData = [];
     }
 
-    connectedCallback() {
-        this._render();
-        this.handleScrollChange();
-        this.handleMenuExpand();
+    async connectedCallback() {
 
-        const mediaQuery = window.matchMedia('(min-width: 720px)');
+        const dataUrl = this.getAttribute("data-url");
 
-        const handleResizeOut = () => {
-            const button = this.querySelector('.header-navbar-burger');
-            const mobileNav = this.querySelector('.mobile-nav');
-            const header = this.querySelector('header');
+        try {
+            const response = await fetch(dataUrl);
 
-            if (button && mobileNav && header) {
-                mobileNav.classList.add('hidden');
-                document.body.classList.remove('non-scrollable');
-                header.classList.remove('expanded');
+            if (!response.ok) {
+                throw new Error("Could not find the data");
             }
-        };
+
+            this.linksData = await response.json();
+
+            this._render();
+            this.handleScrollChange();
+            this.handleMenuExpand();
+
+            const mediaQuery = window.matchMedia('(min-width: 720px)');
+
+            const handleResizeOut = () => {
+                const button = this.querySelector('.header-navbar-burger');
+                const mobileNav = this.querySelector('.mobile-nav');
+                const header = this.querySelector('header');
+
+                if (button && mobileNav && header) {
+                    mobileNav.classList.add('hidden');
+                    document.body.classList.remove('non-scrollable');
+                    header.classList.remove('expanded');
+                }
+            };
+
+            mediaQuery.addEventListener('change', handleResizeOut);
+
+            window.addEventListener('scroll', () => this.handleScrollChange());
+
+        } catch (error) {
+            console.error(error);
+            this.innerHTML = "<p>Data processing error</p>";
+        }
 
 
-        mediaQuery.addEventListener('change', handleResizeOut);
-
-        window.addEventListener('scroll', () => this.handleScrollChange());
     }
 
     disconnectedCallback() {

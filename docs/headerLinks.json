@@ -1,21 +1,22 @@
-[{
-         "href": "",
-         "text": "Скоро"
-     },
-     {
-         "href": "",
-         "text": "Здесь"
-     },
-     {
-         "href": "",
-         "text": "Будут"
-     },
-     {
-         "href": "",
-         "text": "Новые"
-     },
-     {
-         "href": "",
-         "text": "Разделы"
-     }
+[
+    {
+        "href": "index.html",
+        "text": "Разделы"
+    },
+    {
+        "href": "index.html",
+        "text": "Будут другие"
+    },
+    {
+        "href": "one_more/one_more.html",
+        "text": "Болгарский"
+    },
+    {
+        "href": "ssh_instruction/ssh_instruction.html",
+        "text": "Подключение по ssh"
+    },
+    {
+         "href": "index.html",
+         "text": "Главная"
+    }
 ]

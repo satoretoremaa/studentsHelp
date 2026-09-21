@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
+        <base href="http://localhost:63342/studentsHelp/docs/">
+
         <meta name="color-scheme" content="dark">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,41 +16,54 @@
         <script type="module" src="src/AdaptiveHeader.js"></script>
         <script type="module" src="src/ArticleHeader.js"></script>
         <script type="module" src="src/ScrollTopButton.js"></script>
+        <script type="module" src="src/IssueCard.js"></script>
+
+        <style>
+            :root {
+                --accent: #ffc93e;
+            }
+        </style>
     </head>
 
     <body class="hidden">
-        <adaptive-header></adaptive-header>
+        <adaptive-header data-url="headerLinks.json"></adaptive-header>
 
         <main>
             <article-header
                     date="19.09.2026"
-                    title="Как подключить всё что нужно"
-                    subtitle="Краткое руководство с далеко идущими последствиями"
-                    imageUrl="./img/kittiyo.jpg"
+                    title="Петербург и искусство"
+                    subtitle="пошаговый план для самураев без цели"
+                    imageUrl="global/img/mainBkg.jpg"
             ></article-header>
 
             <article class="wide">
 
-                <a class="article-preview" href="./ssh_instruction/ssh_instruction.html" draggable="false">
-                    <img class="wide-image" src="./ssh_instruction/img/kittiyo.jpg" alt="" draggable="false"/>
-                    <img class="preview-image" src="./ssh_instruction/img/kittiyo.jpg" alt="" draggable="false"/>
+                <issue-card
+                    title="SSH: Как подключить всё что нужно"
+                    href="ssh_instruction/ssh_instruction.html"
+                    date="19.09.2026"
+                    description="Краткое руководство с далеко идущими последствиями"
+                    imageUrl="ssh_instruction/img/kittiyo.jpg"
+                    imageAlt="очень красивый и полосатый кот"
+                ></issue-card>
 
-                    <div class="preview-text">
-                        <div class="date">19.09.2026</div>
-                        <h4>SSH: Как подключить всё что нужно</h4>
-                        <p>Краткое руководство с далеко идущими последствиями</p>
-                    </div>
-
-                </a>
+                <issue-card
+                        title="Теперь тут может быть больше статей"
+                        href="one_more/one_more.html"
+                        date="21.09.2026"
+                        description="Дополнение, о котором почти никто не просил, но все будут благодарны"
+                        imageUrl="one_more/img/kazansky.jpg"
+                        imageAlt="очень красивый и полосатый кот"
+                ></issue-card>
 
             </article>
         </main>
 
         <footer>
-            <div class="narrow">
-                <p>
+            <div class="wide">
+                <span class="sub-text">
                     &copy; Создано во благо человечества
-                </p>
+                </span>
             </div>
         </footer>
 

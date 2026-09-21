@@ -9,12 +9,12 @@
     --header-height: 3.5rem;
 
     --accent-warm: #ef84a5;
-    --accent-cold: #ab8cca;
+    --accent: #ab8cca;
     --grey: #a7a8b3;
-    --pale: #d9cae7;
+    --pale: #ffffff99;
 
-    --bg: #1c1b22;
-    --bg-light: #2a2833;
+    --bg: #1e1d21;
+    --bg-light: #2d2d33;
     --text: #ffffff;
 
     --fs-large: clamp(2rem, 4vw, 4rem);
@@ -31,7 +31,7 @@
     -webkit-tap-highlight-color: transparent;
 
     &::selection {
-        background: var(--accent-cold);
+        background: var(--accent);
         color: var(--text);
     }
 }
@@ -57,7 +57,7 @@ h1 {
 }
 
 h2 {
-    color: var(--accent-cold);
+    color: var(--accent);
     margin-top: 2rem;
 }
 
@@ -78,18 +78,19 @@ a {
     transition: color 0.2s ease;
 
     &:active {
-        color: var(--accent-cold);
+        color: var(--accent);
     }
 
     @media (hover: hover) {
         &:hover {
-            color: var(--accent-cold);
+            color: var(--accent);
         }
     }
 }
 
 p, .code-block {
     margin-bottom: 0.75rem;
+    text-wrap-style: pretty;
 }
 
 .date, .subtitle, .sub-text {
@@ -212,12 +213,12 @@ header {
         transition: stroke 0.2s ease;
 
         &:active {
-            stroke: var(--accent-cold);
+            stroke: var(--accent);
         }
 
         @media (hover: hover) {
             &:hover {
-                stroke: var(--accent-cold);
+                stroke: var(--accent);
             }
         }
     }
@@ -252,6 +253,7 @@ header {
     left: -2px;
     width: calc(4px + 100%);
     background-color: var(--bg-light);
+    filter: brightness(0.6);
     z-index: -2;
 }
 
@@ -308,7 +310,7 @@ article, .narrow {
     width: calc(40px + 100%);
     height: calc(40px + 100%);
     object-fit: cover;
-    filter: blur(10px);
+    filter: blur(10px) brightness(0.6);
 }
 
 .preview-image {
@@ -379,13 +381,14 @@ pre {
     display: block;
     bottom: 2rem;
     right: 10vw;
+    z-index: 2;
     transition: transform, opacity 0.2s ease;
     padding: 1rem 2rem;
     border-radius: 1.5rem;
     color: var(--text);
     outline: none;
     border: none;
-    background-color: var(--accent-cold);
+    background-color: var(--accent);
     font-size: 1rem;
     pointer-events: auto;
 
