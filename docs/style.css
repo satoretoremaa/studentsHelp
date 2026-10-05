@@ -47,6 +47,30 @@ li {
     }
 }
 
+.huge-list {
+    list-style: none;
+
+    li {
+        position: relative;
+        color: var(--text);
+        margin-left: 0;
+        margin-bottom: 1rem;
+        text-wrap-style: pretty;
+        counter-increment: item-counter;
+    }
+
+    li::before {
+        content: counter(item-counter) "";
+        font-size: var(--fs-large-medium);
+        font-weight: 800;
+        color: var(--accent);
+
+        margin-right: 0.5rem;
+
+        display: inline-block;
+    }
+}
+
 h1 {
     color: white;
     font-weight: bold;
